@@ -2,4 +2,6 @@
 
 port drive code over here
   one simple autonmous and teleop
-  ramp mode on speed
+  
+We will steal liberally from these guys
+https://github.com/team2053tigertronics/2017Code
