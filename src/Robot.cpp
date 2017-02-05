@@ -1,33 +1,55 @@
+#include<Robot.h>
 #include <memory>
-
+#include<timer.h>
 #include <Commands/Command.h>
 #include <Commands/Scheduler.h>
 #include <IterativeRobot.h>
 #include <LiveWindow/LiveWindow.h>
 #include <SmartDashboard/SendableChooser.h>
 #include <SmartDashboard/SmartDashboard.h>
-
-#include "Commands/ExampleCommand.h"
+#include <XboxController.h>
 #include "CommandBase.h"
+#include "Commands/AutonomousCenter.h"
+
+std::shared_ptr<DriveBaseSubsystem> drivebaseSubsystem;
+std::shared_ptr<ClimberSubsystem> climerSubsystem;
+//std::shared_ptr<ServoSubsystem> servoSubsystem;
+
+#define PIXY_INITIAL_ARRAYSIZE      30
+#define PIXY_MAXIMUM_ARRAYSIZE      130
+#define PIXY_START_WORD             0xaa55 //for regular color recognition
+#define PIXY_START_WORD_CC          0xaa56 //for color code - angle rotation recognition
+#define PIXY_START_WORDX            0x55aa //regular color another way around
+#define PIXY_MAX_SIGNATURE          7
+#define PIXY_DEFAULT_ARGVAL         0xffff
+
+// Pixy x-y position values
+#define PIXY_MIN_X                  0L   //x: 0~319 pixels, y:0~199 pixels. (0,0) starts at bottom left
+#define PIXY_MAX_X                  319L
+#define PIXY_MIN_Y                  0L
+#define PIXY_MAX_Y                  199L
+
+// RC-servo values - not needed unless you want to use servo to face the goal instead of moving the whole robot
+#define PIXY_RCS_MIN_POS            0L
+#define PIXY_RCS_MAX_POS            1000L
+#define PIXY_RCS_CENTER_POS         ((PIXY_RCS_MAX_POS-PIXY_RCS_MIN_POS)/2)
 
 class Robot: public frc::IterativeRobot {
 public:
 	void RobotInit() override {
-
 		RobotMap::init();
-		//myRobot.SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
-		//myRobot.SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
+		drivebaseSubsystem.reset(new DriveBaseSubsystem());
 
-		chooser.AddDefault("Default Auto", new ExampleCommand());
-		//chooser.AddObject("My Auto", new MyAutoCommand());
+
+		chooser.AddDefault("Default Auto", new AutonomousCenter());
+		// chooser.AddObject("My Auto", new MyAutoCommand());
 		frc::SmartDashboard::PutData("Auto Modes", &chooser);
+		myRobot.SetExpiration(0.1);
+		timer.Start();
+		CameraServer::GetInstance()->StartAutomaticCapture();
 	}
 
-	/**
-	 * This function is called once each time the robot enters Disabled mode.
-	 * You can use it to reset any subsystem information you want to clear when
-	 * the robot is disabled.
-	 */
+
 	void DisabledInit() override {
 
 	}
@@ -36,25 +58,19 @@ public:
 		frc::Scheduler::GetInstance()->Run();
 	}
 
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * GetString code to get the auto name from the text box below the Gyro.
-	 *
-	 * You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the if-else structure below with additional strings & commands.
-	 */
+
 	void AutonomousInit() override {
 		/* std::string autoSelected = frc::SmartDashboard::GetString("Auto Selector", "Default");
+
 		if (autoSelected == "My Auto") {
 			autonomousCommand.reset(new MyAutoCommand());
 		}
 		else {
 			autonomousCommand.reset(new ExampleCommand());
 		} */
+
+		timer.Reset();
+		timer.Start();
 
 		autonomousCommand.reset(chooser.GetSelected());
 
@@ -68,23 +84,23 @@ public:
 	}
 
 	void TeleopInit() override {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
 		if (autonomousCommand != nullptr) {
 			autonomousCommand->Cancel();
 		}
+		climberCommand(new Climber(0.5,0.5));//call the Command and set the speed 0.5
 	}
 
 	void TeleopPeriodic() override {
 		frc::Scheduler::GetInstance()->Run();
-
-		myRobot.MecanumDrive_Cartesian(leftstick.GetRawAxis(1),
-				                       leftstick.GetRawAxis(0),
-				                       leftstick.GetRawAxis(4));
-
-		frc::LiveWindow* lw = frc::LiveWindow::GetInstance();
+		myRobot.MecanumDrive_Cartesian(leftstick.GetRawAxis(1), // 0,1 is the X and Y axis of the leftstick
+			                           leftstick.GetRawAxis(0),
+									   -leftstick.GetRawAxis(4));
+		if(leftstick.GetRawButton(5)){
+			climberCommand->Start;//command starts
+		}
+		/*else{
+			//climberCommand->Cancel();//command cancles
+		}*/
 	}
 
 	void TestPeriodic() override {
@@ -93,9 +109,12 @@ public:
 
 private:
 	std::unique_ptr<frc::Command> autonomousCommand;
+	std::unique_ptr<frc::Command> climberCommand;
 	frc::SendableChooser<frc::Command*> chooser;
-	frc::RobotDrive myRobot { 1,2,3,4 };  // Robot drive system
-	frc::XboxController leftstick { 0 };       // Only joystick
+	frc::RobotDrive myRobot {1, 2, 3, 4};
+	frc::Joystick leftstick {0};
+	frc::Timer timer;
+
 };
 
 START_ROBOT_CLASS(Robot)

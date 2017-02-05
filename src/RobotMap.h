@@ -1,39 +1,23 @@
 #ifndef ROBOTMAP_H
 #define ROBOTMAP_H
-
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
-
-// For example to map the left and right motors, you could define the
-// following variables to use with your drivetrain subsystem.
-// constexpr int LEFTMOTOR = 1;
-// constexpr int RIGHTMOTOR = 2;
-
-// If you are using multiple modules, make sure to define both the port
-// number and the module. For example you with a rangefinder:
-// constexpr int RANGE_FINDER_PORT = 1;
-// constexpr int RANGE_FINDER_MODULE = 1;
 #include "WPILib.h"
+#include <Victor.h>
+#include <Servo.h>
 #include <VictorSP.h>
 
-class RobotMap {
 
+class RobotMap{
 public:
-
 	static void init();
-
-	static std::shared_ptr<VictorSP> driveBaseSubsystemFrontLeftVictor;
-	static std::shared_ptr<VictorSP> driveBaseSubsystemFrontRightVictor;
-	static std::shared_ptr<VictorSP> driveBaseSubsystemBackLeftVictor;
-	static std::shared_ptr<VictorSP> driveBaseSubsystemBackRightVictor;
-
+	static std::shared_ptr<Victor> driveBaseSubsystemfrontLeftVictor;
+	static std::shared_ptr<Victor> driveBaseSubsystemfrontRightVictor;
+	static std::shared_ptr<Victor> driveBaseSubsystembackLeftVictor;
+	static std::shared_ptr<Victor> driveBaseSubsystembackRightVictor;
 	static std::shared_ptr<RobotDrive> myRobot;
+	static std::shared_ptr<Victor> climberSubsystemClimbVictor;
+	//static std::shared_ptr<Servo> servoSubsystemServo;
+	//static std::shared_ptr<Servo> myServo;
 
 };
-
 
 #endif  // ROBOTMAP_H
