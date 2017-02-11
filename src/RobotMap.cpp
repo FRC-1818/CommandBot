@@ -1,30 +1,34 @@
+/*
+ * RobotMap.cpp
+
+ *
+ *  Created on: 2017Äê2ÔÂ9ÈÕ
+ *      Author: Zeming
+ */
 #include "RobotMap.h"
+#include <Victor.h>
 
-std::shared_ptr<Victor> RobotMap::driveBaseSubsystemfrontLeftVictor;
-std::shared_ptr<Victor> RobotMap::driveBaseSubsystemfrontRightVictor;
-std::shared_ptr<Victor> RobotMap::driveBaseSubsystembackLeftVictor;
-std::shared_ptr<Victor> RobotMap::driveBaseSubsystembackRightVictor;
+std::shared_ptr<frc::Victor> RobotMap::driveBaseSubsystemfrontLeftVictor;
+std::shared_ptr<frc::Victor> RobotMap::driveBaseSubsystemfrontRightVictor;
+std::shared_ptr<frc::Victor> RobotMap::driveBaseSubsystembackLeftVictor;
+std::shared_ptr<frc::Victor> RobotMap::driveBaseSubsystembackRightVictor;
 std::shared_ptr<frc::RobotDrive> RobotMap::myRobot;
-std::shared_ptr<Victor> RobotMap::climberSubsystemClimbVictor;
-//std::shared_ptr<Servo> RobotMap::myServo;
-
+std::shared_ptr<frc::Victor> RobotMap::climberSubsystemClimbVictor;
 
 void RobotMap::init() {
 
-	//myServo.reset(new frc::Servo(servoSubsystemServo));
+	myRobot.reset(new frc::RobotDrive(driveBaseSubsystemfrontLeftVictor,
+	    		                      driveBaseSubsystembackLeftVictor,
+				                      driveBaseSubsystemfrontRightVictor,
+				                      driveBaseSubsystembackRightVictor));
 
-    driveBaseSubsystemfrontLeftVictor.reset(new Victor(frc::RobotDrive::kFrontLeftMotor));
+	driveBaseSubsystemfrontLeftVictor.reset(new frc::Victor(frc::RobotDrive::kFrontLeftMotor));
 
-    driveBaseSubsystemfrontRightVictor.reset(new Victor(frc::RobotDrive::kFrontRightMotor));
+	driveBaseSubsystemfrontRightVictor.reset(new frc::Victor(frc::RobotDrive::kFrontRightMotor));
 
-    driveBaseSubsystembackLeftVictor.reset(new Victor(frc::RobotDrive::kRearLeftMotor));
+	driveBaseSubsystembackLeftVictor.reset(new frc::Victor(frc::RobotDrive::kRearLeftMotor));
 
-    driveBaseSubsystembackRightVictor.reset(new Victor(frc::RobotDrive::kRearRightMotor));
-
-    myRobot.reset(new frc::RobotDrive(driveBaseSubsystemfrontLeftVictor,
-    		                          driveBaseSubsystembackLeftVictor,
-			                          driveBaseSubsystemfrontRightVictor,
-			                          driveBaseSubsystembackRightVictor));
+	driveBaseSubsystembackRightVictor.reset(new frc::Victor(frc::RobotDrive::kRearRightMotor));
 
     myRobot->SetSafetyEnabled(false);
 
@@ -38,20 +42,14 @@ void RobotMap::init() {
 
     myRobot->SetInvertedMotor(frc::RobotDrive::kRearRightMotor, true);
 
-
-    climberSubsystemClimbVictor.reset(new Victor(5));
+    climberSubsystemClimbVictor.reset(new frc::Victor(5));
 
     //pdp.reset(new frc::PowerDistributionPanel());
 
     //robotIMU.reset(new AHRS(frc::SPI::Port::kMXP));
 
     //tigerDrive.reset(new TigerDrive(robotIMU.get()));
-
 }
-
-
-
-
 
 
 
