@@ -1,10 +1,9 @@
 #ifndef ROBOTMAP_H
 #define ROBOTMAP_H
+
 #include "WPILib.h"
 #include <Victor.h>
-#include <Servo.h>
-#include <VictorSP.h>
-
+//#include <VictorSP.h>
 
 class RobotMap{
 public:
@@ -15,9 +14,8 @@ public:
 	static std::shared_ptr<Victor> driveBaseSubsystembackRightVictor;
 	static std::shared_ptr<RobotDrive> myRobot;
 	static std::shared_ptr<Victor> climberSubsystemClimbVictor;
-	//static std::shared_ptr<Servo> servoSubsystemServo;
-	//static std::shared_ptr<Servo> myServo;
 
 };
+
 
 #endif  // ROBOTMAP_H

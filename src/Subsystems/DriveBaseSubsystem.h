@@ -1,6 +1,5 @@
-#ifndef EXAMPLE_SUBSYSTEM_H
-#define EXAMPLE_SUBSYSTEM_H
-
+#ifndef DriveBaseSubsystem_H
+#define DriveBaseSubsystem_H
 #include <Commands/Subsystem.h>
 #include <RobotDrive.h>
 #include <Victor.h>
@@ -17,9 +16,6 @@ public:
 	DriveBaseSubsystem();
 	void InitDefaultCommand() override;
 	void MecanumDrive(float x, float y, float rot, float gyro);
-
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
 };
 
-#endif  // EXAMPLE_SUBSYSTEM_H
+#endif  // DriveBaseSubsystem_H
