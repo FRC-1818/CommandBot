@@ -23,6 +23,9 @@ void DriveCommand::Execute() {
 	xAxis = Robot::oi->GetLeftXAxisDriver();
 	yAxis = Robot::oi->GetLeftYAxisDriver();
 	rotAxis = Robot::oi->GetRightXAxisDriver();
+	adjustedYaw = 0;
+
+	Robot::drivebaseSubsystem->MecanumDrive(xAxis, yAxis, rotAxis,adjustedYaw);
 }
 
 bool DriveCommand::IsFinished() {
@@ -37,7 +40,7 @@ void DriveCommand::Interrupted() {
 
 }
 
-void DriveCommand::CallToMecanumDrive() {
+/*void DriveCommand::CallToMecanumDrive() {
 	if(rotAxis == 0)
 	{
 		Robot::drivebaseSubsystem->MecanumDrive(xAxis, yAxis, finalAutoRot, adjustedYaw);
@@ -47,3 +50,4 @@ void DriveCommand::CallToMecanumDrive() {
 		Robot::drivebaseSubsystem->MecanumDrive(xAxis, yAxis, rotAxis,adjustedYaw);
 	}
 }
+*/

@@ -1,7 +1,7 @@
 #include "Climbstop.h"
 
 Climbstop::Climbstop() {
-
+	Requires(Robot::climberSubsystem.get());
 }
 
 void Climbstop::Initialize() {

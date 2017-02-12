@@ -4,17 +4,28 @@
 #include "Commands/Climber/Climbup.h"
 #include "Commands/Climber/Climbdown.h"
 #include "Commands/Climber/Climbstop.h"
+#include "Commands/Hopper/Hopperup.h"
+#include "Commands/Hopper/Hopperdown.h"
 
 OI::OI() {
-	joystick.reset(new Joystick(0));
+	joystick.reset(new XboxController(0));
 
 	climbupOperator.reset(new JoystickButton(joystick.get(), 5));
 	climbdownOperator.reset(new JoystickButton(joystick.get(), 4));
 	climbstopOperator.reset(new JoystickButton(joystick.get(), 2));
 
+	hopperupOperator.reset(new JoystickButton(joystick.get(),3));
+	hopperdownOperator.reset(new JoystickButton(joystick.get(),2));
+
 	climbupOperator->WhenPressed(new Climbup);
 	climbdownOperator->WhenPressed(new Climbdown);
 	climbstopOperator->WhenPressed(new Climbstop);
+
+	hopperupOperator->WhenPressed(new Hopperup);
+	hopperdownOperator->WhenPressed(new Hopperdown);
+
+
+
 }
 
 double OI::GetLeftXAxisDriver(){

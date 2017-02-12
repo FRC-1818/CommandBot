@@ -5,15 +5,18 @@
 
 class OI {
 private:
-	std::shared_ptr<Joystick> joystick;
+	std::shared_ptr<XboxController> joystick;
 public:
 	OI();
 
-	std::shared_ptr<Joystick> GetJoystick();
+	std::shared_ptr<XboxController> GetJoystick();
 
 	std::shared_ptr<JoystickButton> climbupOperator;
 	std::shared_ptr<JoystickButton> climbdownOperator;
 	std::shared_ptr<JoystickButton> climbstopOperator;
+
+	std::shared_ptr<JoystickButton> hopperupOperator;
+	std::shared_ptr<JoystickButton> hopperdownOperator;
 
 	double GetLeftXAxisDriver();
 	double GetLeftYAxisDriver();

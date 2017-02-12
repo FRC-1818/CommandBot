@@ -11,25 +11,30 @@
 //#include "CommandBase.h"
 //#include <Victor.h>
 #include "Commands/Autonomous/AutonomousCenter.h"
+#include "Commands/Drive/DriveCommand.h"
 
 std::shared_ptr<DriveBaseSubsystem> Robot::drivebaseSubsystem;
 std::shared_ptr<ClimberSubsystem> Robot::climberSubsystem;
-std::shared_ptr<Joystick> Robot::joystick;
+std::shared_ptr<HopperSubsystem> Robot::hopperSubsystem;
+//std::shared_ptr<Joystick> Robot::joystick;
 std::unique_ptr<OI> Robot::oi;
-bool Robot::doBoiler;
-DriverStation::Alliance Robot::currentAlliance;
+std::shared_ptr<I2C> Robot::i2c;
+//bool Robot::doBoiler;
+//DriverStation::Alliance Robot::currentAlliance;
 
 
 	void Robot::RobotInit(){
 		RobotMap::init();
 		drivebaseSubsystem.reset(new DriveBaseSubsystem());
 		climberSubsystem.reset(new ClimberSubsystem());
+		hopperSubsystem.reset(new HopperSubsystem());
 		oi.reset(new OI());
-		currentAlliance = DriverStation::GetInstance().GetAlliance();
-		doBoiler = true;
-		SmartDashboard::PutBoolean("Do Boiler", &doBoiler);
-		autoChooser.AddDefault("AutonomousCenter", new AutonomousCenter());
-		SmartDashboard::PutData("Auto Mode Chooser", &autoChooser);
+		driveCommand.reset(new DriveCommand());
+		//currentAlliance = DriverStation::GetInstance().GetAlliance();
+		//doBoiler = true;
+		//SmartDashboard::PutBoolean("Do Boiler", &doBoiler);
+		//autoChooser.AddDefault("AutonomousCenter", new AutonomousCenter());
+		//SmartDashboard::PutData("Auto Mode Chooser", &autoChooser);
 	}
 
 	void Robot::DisabledInit(){
@@ -55,11 +60,12 @@ DriverStation::Alliance Robot::currentAlliance;
 		if (selectedMode != nullptr) {
 				selectedMode->Cancel();
 			}
-		//climberCommand(new Climber(1.0, 0.5));
 	}
 
 	void Robot::TeleopPeriodic(){
 		frc::Scheduler::GetInstance()->Run();
+		driveCommand->Start();
+
 	}
 
 	void Robot::TestPeriodic(){

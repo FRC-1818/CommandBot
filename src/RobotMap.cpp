@@ -7,6 +7,8 @@
  */
 #include "RobotMap.h"
 #include <Victor.h>
+#include <XboxController.h>
+#include <I2C.h>
 
 std::shared_ptr<frc::Victor> RobotMap::driveBaseSubsystemfrontLeftVictor;
 std::shared_ptr<frc::Victor> RobotMap::driveBaseSubsystemfrontRightVictor;
@@ -14,13 +16,16 @@ std::shared_ptr<frc::Victor> RobotMap::driveBaseSubsystembackLeftVictor;
 std::shared_ptr<frc::Victor> RobotMap::driveBaseSubsystembackRightVictor;
 std::shared_ptr<frc::RobotDrive> RobotMap::myRobot;
 std::shared_ptr<frc::Victor> RobotMap::climberSubsystemClimbVictor;
-
+std::shared_ptr<XboxController> RobotMap::joystick;
+std::shared_ptr<I2C> RobotMap::i2c;
+std::shared_ptr<Victor> RobotMap::hopperSubsystemhopperVictor;
 void RobotMap::init() {
+	//i2c.reset(new frc::I2C*I2C);
+printf("started robotmap init");
+	joystick.reset(new frc::XboxController(0));
 
-	myRobot.reset(new frc::RobotDrive(driveBaseSubsystemfrontLeftVictor,
-	    		                      driveBaseSubsystembackLeftVictor,
-				                      driveBaseSubsystemfrontRightVictor,
-				                      driveBaseSubsystembackRightVictor));
+	hopperSubsystemhopperVictor.reset(new frc::Victor(7));
+
 
 	driveBaseSubsystemfrontLeftVictor.reset(new frc::Victor(frc::RobotDrive::kFrontLeftMotor));
 
@@ -29,6 +34,13 @@ void RobotMap::init() {
 	driveBaseSubsystembackLeftVictor.reset(new frc::Victor(frc::RobotDrive::kRearLeftMotor));
 
 	driveBaseSubsystembackRightVictor.reset(new frc::Victor(frc::RobotDrive::kRearRightMotor));
+    printf("robotmap init drivesubsystem");
+
+	myRobot.reset(new frc::RobotDrive(driveBaseSubsystemfrontLeftVictor,
+	    		                      driveBaseSubsystembackLeftVictor,
+				                      driveBaseSubsystemfrontRightVictor,
+				                      driveBaseSubsystembackRightVictor));
+    printf("robotmap init myrobot");
 
     myRobot->SetSafetyEnabled(false);
 
@@ -49,6 +61,8 @@ void RobotMap::init() {
     //robotIMU.reset(new AHRS(frc::SPI::Port::kMXP));
 
     //tigerDrive.reset(new TigerDrive(robotIMU.get()));
+    printf("finished robotmap init");
+
 }
 
 

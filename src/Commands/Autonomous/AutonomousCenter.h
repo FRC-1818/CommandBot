@@ -2,7 +2,7 @@
 #define AutonomousCenter_H
 
 #include <Commands/CommandGroup.h>
-
+#include <Robot.h>
 class AutonomousCenter : public CommandGroup {
 public:
 	AutonomousCenter();

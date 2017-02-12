@@ -1,6 +1,7 @@
 #include <Commands/Climber/Climbup.h>
 
 Climbup::Climbup() {
+	Requires(Robot::climberSubsystem.get());
 
 }
 
