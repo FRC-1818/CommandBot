@@ -18,6 +18,9 @@ public:
 	std::shared_ptr<JoystickButton> hopperupOperator;
 	std::shared_ptr<JoystickButton> hopperdownOperator;
 
+	std::shared_ptr<JoystickButton> elevatorOnOperator;
+	std::shared_ptr<JoystickButton> elevatorOffOperator;
+
 	double GetLeftXAxisDriver();
 	double GetLeftYAxisDriver();
 	double GetRightXAxisDriver();

@@ -13,6 +13,10 @@ void DriveBaseSubsystem::InitDefaultCommand() {
 
 }
 
-void DriveBaseSubsystem::MecanumDrive(float x, float y, float rot, float gyro){
+void DriveBaseSubsystem::MecanumDrive(double x, double y, double rot, double gyro){
 	robotDrive->MecanumDrive_Cartesian(x,y,rot,gyro);
 }
+
+//void DriveBaseSubsystem::MecanumDrive(frc::XboxController*joystick){
+	//robotDrive->MecanumDrive_Cartesian(joystick->GetRawAxis(0),joystick->GetRawAxis(1),joystick->GetRawAxis(4), 0);
+//}

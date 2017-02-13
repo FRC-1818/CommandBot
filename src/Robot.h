@@ -14,10 +14,12 @@
 #include "Subsystems/DriveBaseSubsystem.h"
 #include "Subsystems/ClimberSubsystem.h"
 #include "Subsystems/HopperSubsystem.h"
+#include "Subsystems/ElevatorSubsystem.h"
 #include <Victor.h>
 #include <XboxController.h>
 #include <Joystick.h>
 #include <I2C.h>
+#include <DigitalInput.h>
 //#include "Commands/Drive/DriveCommand.h"
 
 class Robot: public IterativeRobot {
@@ -29,9 +31,11 @@ public:
 	static std::shared_ptr<DriveBaseSubsystem> drivebaseSubsystem;
 	static std::shared_ptr<ClimberSubsystem> climberSubsystem;
 	static std::shared_ptr<HopperSubsystem> hopperSubsystem;
+	static std::shared_ptr<ElevatorSubsystem> elevatorSubsystem;
 	//static std::shared_ptr<XboxController> joystick;
 	static std::shared_ptr<RobotDrive> myRobot;
 	static std::shared_ptr<I2C> i2c;
+	static std::shared_ptr<DigitalInput> upLimit;
 	static bool doBoiler;
 
 	virtual void RobotInit();
@@ -46,5 +50,6 @@ private:
 	frc::SendableChooser<frc::Command*> autoChooser;
 	std::unique_ptr<frc::Command> selectedMode;
 	std::unique_ptr<frc::Command> driveCommand;
+	std::unique_ptr<frc::Command> elevatorOn;
 };
 #endif

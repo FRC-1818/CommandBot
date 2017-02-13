@@ -6,6 +6,8 @@
 #include "Commands/Climber/Climbstop.h"
 #include "Commands/Hopper/Hopperup.h"
 #include "Commands/Hopper/Hopperdown.h"
+#include "Commands/Elevator/ElevatorOn.h"
+#include "Commands/Elevator/ElevatorOff.h"
 
 OI::OI() {
 	joystick.reset(new XboxController(0));
@@ -24,7 +26,8 @@ OI::OI() {
 	hopperupOperator->WhenPressed(new Hopperup);
 	hopperdownOperator->WhenPressed(new Hopperdown);
 
-
+	elevatorOnOperator->WhenPressed(new ElevatorOn);
+	elevatorOffOperator->WhenPressed(new ElevatorOff);
 
 }
 

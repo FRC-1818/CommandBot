@@ -7,7 +7,7 @@ DriveCommand::DriveCommand() {
 	rotAxis = 0;
 	setSpeed = 1;
 	adjustedYaw = 0;
-	finalAutoRot = 0;
+	//finalAutoRot = 0;
 }
 
 void DriveCommand::Initialize() {
@@ -16,7 +16,7 @@ void DriveCommand::Initialize() {
 	rotAxis = 0;
 	setSpeed = 1;
 	adjustedYaw = 0;
-	finalAutoRot = 0;
+	//finalAutoRot = 0;
 }
 
 void DriveCommand::Execute() {
@@ -25,7 +25,8 @@ void DriveCommand::Execute() {
 	rotAxis = Robot::oi->GetRightXAxisDriver();
 	adjustedYaw = 0;
 
-	Robot::drivebaseSubsystem->MecanumDrive(xAxis, yAxis, rotAxis,adjustedYaw);
+	Robot::drivebaseSubsystem->MecanumDrive(xAxis, yAxis, rotAxis, adjustedYaw);
+	//Robot::drivebaseSubsystem->MecanumDrive(Robot::oi->GetLeftXAxisDriver(), Robot::oi->GetLeftYAxisDriver(), Robot::oi->GetRightXAxisDriver(),adjustedYaw);
 }
 
 bool DriveCommand::IsFinished() {

@@ -15,12 +15,12 @@ public:
 private:
 	void CallToMecanumDrive();
 
-	float xAxis;
-	float yAxis;
-	float rotAxis;
-	float setSpeed;
-	float adjustedYaw;
-	float finalAutoRot;
+	double xAxis;
+	double yAxis;
+	double rotAxis;
+	double setSpeed;
+	double adjustedYaw;
+	//double finalAutoRot;
 
 };
 

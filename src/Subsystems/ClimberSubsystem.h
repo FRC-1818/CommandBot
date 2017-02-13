@@ -2,7 +2,6 @@
 #define ClimberSubsystem_H
 
 #include <Commands/Subsystem.h>
-#include <VictorSP.h>
 #include <Victor.h>
 
 class ClimberSubsystem : public Subsystem {

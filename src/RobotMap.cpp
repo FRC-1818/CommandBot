@@ -19,6 +19,7 @@ std::shared_ptr<frc::Victor> RobotMap::climberSubsystemClimbVictor;
 std::shared_ptr<XboxController> RobotMap::joystick;
 std::shared_ptr<I2C> RobotMap::i2c;
 std::shared_ptr<Victor> RobotMap::hopperSubsystemhopperVictor;
+std::shared_ptr<Victor> RobotMap::elevatorSubsystemelevatorVictor;
 void RobotMap::init() {
 	//i2c.reset(new frc::I2C*I2C);
 printf("started robotmap init");
@@ -26,6 +27,7 @@ printf("started robotmap init");
 
 	hopperSubsystemhopperVictor.reset(new frc::Victor(7));
 
+	elevatorSubsystemelevatorVictor.reset(new frc::Victor(6));
 
 	driveBaseSubsystemfrontLeftVictor.reset(new frc::Victor(frc::RobotDrive::kFrontLeftMotor));
 

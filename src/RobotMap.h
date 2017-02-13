@@ -18,6 +18,7 @@ public:
 	static std::shared_ptr<Victor> climberSubsystemClimbVictor;
 	static std::shared_ptr<XboxController> joystick;
 	static std::shared_ptr<Victor> hopperSubsystemhopperVictor;
+	static std::shared_ptr<Victor> elevatorSubsystemelevatorVictor;
 	static std::shared_ptr<I2C> i2c;
 
 };
