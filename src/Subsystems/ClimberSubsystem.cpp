@@ -9,8 +9,9 @@ void ClimberSubsystem::InitDefaultCommand() {
 
 }
 
-void ClimberSubsystem::RunClimbVictor() {
-	climbVictor->SetSpeed(1.0);
+void ClimberSubsystem::RunClimbVictor(float speed) {
+	//float speed;
+	climbVictor->SetSpeed(speed);
 }
 
 void ClimberSubsystem::ReverseClimbVictor(){

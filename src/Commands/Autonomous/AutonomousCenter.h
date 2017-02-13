@@ -1,9 +1,9 @@
 #ifndef AutonomousCenter_H
 #define AutonomousCenter_H
 
-#include <Commands/CommandGroup.h>
+#include <Commands/Command.h>
 #include <Robot.h>
-class AutonomousCenter : public CommandGroup {
+class AutonomousCenter : public Command {
 public:
 	AutonomousCenter();
 };

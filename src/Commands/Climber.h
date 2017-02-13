@@ -2,6 +2,7 @@
 #define Climber_H
 #include "Commands/Command.h"
 #include "../CommandBase.h"
+#include "../robotmap.h"
 
 
 class Climber : public CommandBase {
