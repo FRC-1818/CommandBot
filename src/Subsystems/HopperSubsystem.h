@@ -4,9 +4,11 @@
 #include <Commands/Subsystem.h>
 //#include <Robot.h>
 #include <Victor.h>
+//#include <DigitalInput.h>
 class HopperSubsystem : public Subsystem {
 private:
 	std::shared_ptr<Victor> hopperVictor;
+	//std::shared_ptr<DigitalInput> limitSwitch;
 
 public:
 	HopperSubsystem();

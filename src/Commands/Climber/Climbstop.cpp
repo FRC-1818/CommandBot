@@ -9,7 +9,7 @@ void Climbstop::Initialize() {
 }
 
 void Climbstop::Execute() {
-	Robot::climberSubsystem->StopClimbVictor();
+	Robot::climberSubsystem->StopClimbVictor(0.0);
 }
 
 bool Climbstop::IsFinished() {

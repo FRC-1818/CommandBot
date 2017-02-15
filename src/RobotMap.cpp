@@ -9,6 +9,7 @@
 #include <Victor.h>
 #include <XboxController.h>
 #include <I2C.h>
+#include <Servo.h>
 
 std::shared_ptr<frc::Victor> RobotMap::driveBaseSubsystemfrontLeftVictor;
 std::shared_ptr<frc::Victor> RobotMap::driveBaseSubsystemfrontRightVictor;
@@ -19,13 +20,19 @@ std::shared_ptr<frc::Victor> RobotMap::climberSubsystemClimbVictor;
 std::shared_ptr<XboxController> RobotMap::joystick;
 std::shared_ptr<I2C> RobotMap::i2c;
 std::shared_ptr<Victor> RobotMap::hopperSubsystemhopperVictor;
+std::shared_ptr<Victor> RobotMap::elevatorSubsystemelevatorVictor;
+std::shared_ptr<Servo> RobotMap::servo;
 void RobotMap::init() {
 	//i2c.reset(new frc::I2C*I2C);
 printf("started robotmap init");
+
+    servo.reset(new frc::Servo(8));
+
 	joystick.reset(new frc::XboxController(0));
 
 	hopperSubsystemhopperVictor.reset(new frc::Victor(7));
 
+	elevatorSubsystemelevatorVictor.reset(new frc::Victor(6));
 
 	driveBaseSubsystemfrontLeftVictor.reset(new frc::Victor(frc::RobotDrive::kFrontLeftMotor));
 

@@ -1,6 +1,16 @@
 /*
  * Pixy.h
  *
+ *  Created on: 2017Äê2ÔÂ14ÈÕ
+ *      Author: Zeming
+ */
+
+#ifndef SRC_SUBSYSTEMS_PIXY_H_
+#define SRC_SUBSYSTEMS_PIXY_H_
+
+/*
+ * Pixy.h
+ *
  *  Created on: Feb 11, 2017
  *      Author: Joseph
  */
@@ -216,3 +226,7 @@ bool getStart() //checks whether if it is start of the normal frame, CC frame, o
 
 
 #endif /* SRC_PIXY_H_ */
+
+
+
+#endif /* SRC_SUBSYSTEMS_PIXY_H_ */

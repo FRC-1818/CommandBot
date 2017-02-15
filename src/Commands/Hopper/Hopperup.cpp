@@ -13,13 +13,15 @@ void Hopperup::Execute() {
 }
 
 bool Hopperup::IsFinished() {
+	Robot::upLimit->Get();
 	return false;
+
 }
 
 void Hopperup::End() {
-
+	Robot::hopperSubsystem->StopHopperVictor();
 }
 
 void Hopperup::Interrupted() {
-
+	Robot::hopperSubsystem->StopHopperVictor();
 }

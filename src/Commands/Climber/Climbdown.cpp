@@ -9,7 +9,7 @@ void Climbdown::Initialize() {
 }
 
 void Climbdown::Execute() {
-	Robot::climberSubsystem->ReverseClimbVictor();
+	Robot::climberSubsystem->ReverseClimbVictor(0.5);
 }
 
 bool Climbdown::IsFinished() {

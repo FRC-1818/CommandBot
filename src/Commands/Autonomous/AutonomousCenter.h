@@ -1,11 +1,16 @@
 #ifndef AutonomousCenter_H
 #define AutonomousCenter_H
 
-#include <Commands/Command.h>
-#include <Robot.h>
-class AutonomousCenter : public Command {
+#include "CommandBase.h"
+
+class AutonomousCenter : public CommandBase {
 public:
 	AutonomousCenter();
+	void Initialize();
+	void Execute();
+	bool IsFinished();
+	void End();
+	void Interrupted();
 };
 
 #endif  // AutonomousCenter_H

@@ -10,7 +10,7 @@ void Climbup::Initialize() {
 }
 
 void Climbup::Execute() {
-    Robot::climberSubsystem->RunClimbVictor(1.0);
+    Robot::climberSubsystem->RunClimbVictor(-1.0);
 }
 
 bool Climbup::IsFinished() {

@@ -16,6 +16,7 @@ public:
 	DriveBaseSubsystem();
 	void InitDefaultCommand() override;
 	void MecanumDrive(float x, float y, float rot, float gyro);
+	//void MecanumDrive(frc::XboxController*joystick);
 };
 
 #endif  // DriveBaseSubsystem_H

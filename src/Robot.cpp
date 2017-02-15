@@ -12,13 +12,18 @@
 //#include <Victor.h>
 #include "Commands/Autonomous/AutonomousCenter.h"
 #include "Commands/Drive/DriveCommand.h"
+#include "Commands/Elevator/ElevatorOn.h"
+
 
 std::shared_ptr<DriveBaseSubsystem> Robot::drivebaseSubsystem;
 std::shared_ptr<ClimberSubsystem> Robot::climberSubsystem;
 std::shared_ptr<HopperSubsystem> Robot::hopperSubsystem;
+std::shared_ptr<ElevatorSubsystem> Robot::elevatorSubsystem;
 //std::shared_ptr<Joystick> Robot::joystick;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<I2C> Robot::i2c;
+//std::shared_ptr<CameraSubsystem> Robot::cameraSubsystem;
+std::shared_ptr<DigitalInput> Robot::upLimit;
 //bool Robot::doBoiler;
 //DriverStation::Alliance Robot::currentAlliance;
 
@@ -28,8 +33,10 @@ std::shared_ptr<I2C> Robot::i2c;
 		drivebaseSubsystem.reset(new DriveBaseSubsystem());
 		climberSubsystem.reset(new ClimberSubsystem());
 		hopperSubsystem.reset(new HopperSubsystem());
+		elevatorSubsystem.reset(new ElevatorSubsystem());
 		oi.reset(new OI());
 		driveCommand.reset(new DriveCommand());
+		elevatorOn.reset(new ElevatorOn());
 		//currentAlliance = DriverStation::GetInstance().GetAlliance();
 		//doBoiler = true;
 		//SmartDashboard::PutBoolean("Do Boiler", &doBoiler);
@@ -60,12 +67,12 @@ std::shared_ptr<I2C> Robot::i2c;
 		if (selectedMode != nullptr) {
 				selectedMode->Cancel();
 			}
+		driveCommand->Start();
+		elevatorOn->Start();
 	}
 
 	void Robot::TeleopPeriodic(){
 		frc::Scheduler::GetInstance()->Run();
-		driveCommand->Start();
-
 	}
 
 	void Robot::TestPeriodic(){
