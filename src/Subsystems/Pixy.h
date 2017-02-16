@@ -1,22 +1,12 @@
 /*
  * Pixy.h
  *
- *  Created on: 2017Äê2ÔÂ14ÈÕ
+ *  Created on: 2017Ã„Ãª2Ã”Ã‚14ÃˆÃ•
  *      Author: Zeming
  */
 
 #ifndef SRC_SUBSYSTEMS_PIXY_H_
 #define SRC_SUBSYSTEMS_PIXY_H_
-
-/*
- * Pixy.h
- *
- *  Created on: Feb 11, 2017
- *      Author: Joseph
- */
-
-#ifndef SRC_PIXY_H_
-#define SRC_PIXY_H_
 
 #include "WPILib.h"
 #include <I2C.h>
@@ -125,7 +115,7 @@ bool getStart() //checks whether if it is start of the normal frame, CC frame, o
 		}
 	}
 
-	uint16_t getWord() //Getting two Bytes from Pixy (The full information)
+uint16_t getWord() //Getting two Bytes from Pixy (The full information)
 
 	{
 		unsigned char buffer[2] = { 0, 0 };
@@ -134,7 +124,7 @@ bool getStart() //checks whether if it is start of the normal frame, CC frame, o
 		return (buffer[1] << 8) | buffer[0]; //shift buffer[1] by 8 bits and add( | is bitwise or) buffer[0] to it
 	}
 
-	uint8_t getByte() //gets a byte
+uint8_t getByte() //gets a byte
 	{
 		unsigned char buffer[1] = { 0 };
 
@@ -142,7 +132,7 @@ bool getStart() //checks whether if it is start of the normal frame, CC frame, o
 		return buffer[0];
 	}
 
-	uint16_t getBlocks(uint16_t maxBlocks) {
+uint16_t getBlocks(uint16_t maxBlocks) {
 		blocks[0] = {0}; //resets the array - clears out data from previous reading
 		uint8_t i;
 		uint16_t w, checksum, sum;
@@ -205,7 +195,7 @@ bool getStart() //checks whether if it is start of the normal frame, CC frame, o
 		}
 	}
 
-	void followBlock() //change servo into drive code, and it should work well :)
+void followBlock() //change servo into drive code, and it should work well :)
 	{
 		if(blocks->signature == 1) //if pixy identify object 1
 		{
@@ -220,13 +210,6 @@ bool getStart() //checks whether if it is start of the normal frame, CC frame, o
 		}
 	}
 
-	int increment_since_last_find = 0;
-
-
-
-
-#endif /* SRC_PIXY_H_ */
-
-
+int increment_since_last_find = 0;
 
 #endif /* SRC_SUBSYSTEMS_PIXY_H_ */
