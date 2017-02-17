@@ -1,32 +1,30 @@
 #include "AutonomousCenter.h"
 
 AutonomousCenter::AutonomousCenter() {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(Robot::chassis.get());
+	Requires(Robot::drivebaseSubsystem.get());
+	timer.reset(new Timer());
+	timer->Reset();
+	timer->Start();
 }
 
-// Called just before this Command runs the first time
 void AutonomousCenter::Initialize() {
-
+	timer->Reset();
+	timer->Start();
 }
 
-// Called repeatedly when this Command is scheduled to run
 void AutonomousCenter::Execute() {
-
+	if(timer->Get() < 3.0)
+	Robot::drivebaseSubsystem->MecanumDrive(0.0, 0.5, 0.0, 0.0);
 }
 
-// Make this return true when this Command no longer needs to run execute()
 bool AutonomousCenter::IsFinished() {
 	return false;
 }
 
-// Called once after isFinished returns true
 void AutonomousCenter::End() {
-
+	timer->Stop();
 }
 
-// Called when another command which requires one or more of the same
-// subsystems is scheduled to run
 void AutonomousCenter::Interrupted() {
 
 }

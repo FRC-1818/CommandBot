@@ -9,6 +9,20 @@ void CameraSubsystem::InitDefaultCommand() {
 
 }
 
-void CameraSubsystem::RunServo(){
-	servo->SetAngle(1.0);
+void CameraSubsystem::RunServo(float angle){
+	servo->SetAngle(angle);
 }
+
+void CameraSubsystem::ServoRange(float range){
+	range = servo->GetMaxAngle() - servo->GetMinAngle();
+}
+
+void CameraSubsystem::ServoMax(){
+	servo->GetMaxAngle();
+}
+
+void CameraSubsystem::ServoMin(){
+	servo->GetMinAngle();
+}
+
+

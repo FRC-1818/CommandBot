@@ -9,14 +9,7 @@ void HopperSubsystem::InitDefaultCommand() {
 
 }
 
-void HopperSubsystem::RunHopperVictor(){
-	hopperVictor->SetSpeed(0.3);
+void HopperSubsystem::RunHopperVictor(float speed){
+	hopperVictor->SetSpeed(speed);
 }
 
-void HopperSubsystem::ReverseHopperVictor(){
-	hopperVictor->SetSpeed(-0.3);
-}
-
-void HopperSubsystem::StopHopperVictor(){
-	hopperVictor->SetSpeed(0.0);
-}

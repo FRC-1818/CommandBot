@@ -1,19 +1,19 @@
-#ifndef Hopperdown_H
-#define Hopperdown_H
+#ifndef AutonomousLeft_H
+#define AutonomousLeft_H
 
 #include "CommandBase.h"
 #include <Robot.h>
 
-class Hopperdown : public CommandBase {
+class AutonomousLeft : public CommandBase {
 public:
-	Hopperdown(float speed);
+	AutonomousLeft();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
 private:
-	float inputSpeed;
+	std::shared_ptr<Timer> timer;
 };
 
-#endif  // Hopperdown_H
+#endif

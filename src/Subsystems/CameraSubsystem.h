@@ -2,7 +2,7 @@
 #define CameraSubsystem_H
 
 #include <Commands/Subsystem.h>
-#include <Robot.h>
+#include <Servo.h>
 
 class CameraSubsystem : public Subsystem {
 private:
@@ -11,7 +11,10 @@ std::shared_ptr<Servo> servo;
 public:
 	CameraSubsystem();
 	void InitDefaultCommand();
-	void RunServo();
+	void RunServo(float angle);
+	void ServoRange(float range);
+	void ServoMax();
+	void ServoMin();
 };
 
 #endif

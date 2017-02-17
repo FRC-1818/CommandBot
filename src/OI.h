@@ -6,7 +6,7 @@
 class OI {
 private:
 	std::shared_ptr<XboxController> joystick;
-	std::shared_ptr<GenericHID> HID;
+	std::shared_ptr<GenericHID> generic;
 public:
 	OI();
 
@@ -20,7 +20,7 @@ public:
 	std::shared_ptr<JoystickButton> hopperstopOperator;
 
 	std::shared_ptr<JoystickButton> elevatorOperator;
-	//std::shared_ptr<JoystickButton> elevatorOffOperator;
+	std::shared_ptr<JoystickButton> elevatorStop;
 
 	double GetLeftXAxisDriver();
 	double GetLeftYAxisDriver();

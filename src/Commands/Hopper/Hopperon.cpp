@@ -1,27 +1,28 @@
-#include "Hopperdown.h"
+#include "Hopperon.h"
 
-Hopperdown::Hopperdown(float speed) {
+Hopperon::Hopperon(float speed) {
 	Requires(Robot::hopperSubsystem.get());
 	inputSpeed = speed;
 }
 
-void Hopperdown::Initialize() {
+void Hopperon::Initialize() {
 
 }
 
-void Hopperdown::Execute() {
+void Hopperon::Execute() {
 	Robot::hopperSubsystem->RunHopperVictor(inputSpeed);
 }
 
-bool Hopperdown::IsFinished() {
-	Robot::downLimit->Get();
+bool Hopperon::IsFinished() {
+	Robot::upLimit->Get();
 	return false;
+
 }
 
-void Hopperdown::End() {
+void Hopperon::End() {
 	Robot::hopperSubsystem->RunHopperVictor(0);
 }
 
-void Hopperdown::Interrupted() {
+void Hopperon::Interrupted() {
 	Robot::hopperSubsystem->RunHopperVictor(0);
 }

@@ -21,10 +21,8 @@ void DriveCommand::Execute() {
 	rotAxis = Robot::oi->GetRightXAxisDriver();
 	adjustedYaw = 0;
 
-	//Robot::drivebaseSubsystem->MecanumDrive(Robot::oi->GetLeftXAxisDriver(),
-	                                        //Robot::oi->GetLeftYAxisDriver(),
-	                                        //Robot::oi->GetRightXAxisDriver(), 0);
-   Robot::drivebaseSubsystem->MecanumDrive(xAxis, yAxis, rotAxis, adjustedYaw);
+   Robot::drivebaseSubsystem->MecanumDrive(-xAxis, -yAxis, -rotAxis, adjustedYaw);
+   //xAxis->Left&Right Slides; yAxis->Forward&Backward; rotAxis->Leftturn&RightTurn
 }
 
 bool DriveCommand::IsFinished() {

@@ -1,7 +1,7 @@
 /*
  * Pixy.h
  *
- *  Created on: 2017Ã„Ãª2Ã”Ã‚14ÃˆÃ•
+ *  Created on: 2017Äê2ÔÂ14ÈÕ
  *      Author: Zeming
  */
 
@@ -10,6 +10,7 @@
 
 #include "WPILib.h"
 #include <I2C.h>
+#include "RobotMap.h"
 
 
 
@@ -82,7 +83,8 @@ struct Block
 	uint16_t angle;
 };
 
-I2C* i2c; //Declare i2c
+//I2C* i2c; //Declare i2c
+
 BlockType blockType; // it is the enum on the top
 bool skipStart; //skips to check 0xaa55, which is byte that tells pixy it is start of new frame
 uint16_t blockCount; //How many signatured objects are there?
@@ -120,7 +122,7 @@ uint16_t getWord() //Getting two Bytes from Pixy (The full information)
 	{
 		unsigned char buffer[2] = { 0, 0 };
 
-		i2c->ReadOnly(2, buffer);
+		RobotMap::i2c->ReadOnly(2, buffer);
 		return (buffer[1] << 8) | buffer[0]; //shift buffer[1] by 8 bits and add( | is bitwise or) buffer[0] to it
 	}
 
@@ -128,7 +130,7 @@ uint8_t getByte() //gets a byte
 	{
 		unsigned char buffer[1] = { 0 };
 
-		i2c->ReadOnly(1, buffer);
+		RobotMap::i2c->ReadOnly(1, buffer);
 		return buffer[0];
 	}
 

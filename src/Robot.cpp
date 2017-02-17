@@ -12,19 +12,18 @@
 //#include <Victor.h>
 #include "Commands/Autonomous/AutonomousCenter.h"
 #include "Commands/Drive/DriveCommand.h"
-#include "Commands/Elevator/ElevatorOn.h"
+#include "Commands/Drive/Camera.h"
 
 
 std::shared_ptr<DriveBaseSubsystem> Robot::drivebaseSubsystem;
 std::shared_ptr<ClimberSubsystem> Robot::climberSubsystem;
 std::shared_ptr<HopperSubsystem> Robot::hopperSubsystem;
 std::shared_ptr<ElevatorSubsystem> Robot::elevatorSubsystem;
-//std::shared_ptr<Joystick> Robot::joystick;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<I2C> Robot::i2c;
-//std::shared_ptr<CameraSubsystem> Robot::cameraSubsystem;
+std::shared_ptr<CameraSubsystem> Robot::cameraSubsystem;
 std::shared_ptr<DigitalInput> Robot::upLimit;
-//bool Robot::doBoiler;
+std::shared_ptr<DigitalInput> Robot::downLimit;
 //DriverStation::Alliance Robot::currentAlliance;
 
 
@@ -34,11 +33,11 @@ std::shared_ptr<DigitalInput> Robot::upLimit;
 		climberSubsystem.reset(new ClimberSubsystem());
 		hopperSubsystem.reset(new HopperSubsystem());
 		elevatorSubsystem.reset(new ElevatorSubsystem());
+		cameraSubsystem.reset(new CameraSubsystem());
 		oi.reset(new OI());
 		driveCommand.reset(new DriveCommand());
-		elevatorOn.reset(new ElevatorOn());
+		cameraCommand.reset(new Camera());
 		//currentAlliance = DriverStation::GetInstance().GetAlliance();
-		//doBoiler = true;
 		//SmartDashboard::PutBoolean("Do Boiler", &doBoiler);
 		//autoChooser.AddDefault("AutonomousCenter", new AutonomousCenter());
 		//SmartDashboard::PutData("Auto Mode Chooser", &autoChooser);
@@ -68,7 +67,6 @@ std::shared_ptr<DigitalInput> Robot::upLimit;
 				selectedMode->Cancel();
 			}
 		driveCommand->Start();
-		elevatorOn->Start();
 	}
 
 	void Robot::TeleopPeriodic(){
@@ -78,18 +76,5 @@ std::shared_ptr<DigitalInput> Robot::upLimit;
 	void Robot::TestPeriodic(){
 
 	}
-
-/*private:
-	std::unique_ptr<frc::Command> autonomousCommand;
-	//std::unique_ptr<frc::Command> climberCommand;
-	frc::SendableChooser<frc::Command*> chooser;
-	frc::RobotDrive myRobot { 1, 2, 3, 4 };
-	frc::Joystick leftstick { 0 };
-	frc::Timer timer;
-	frc::Victor climber;
-	I2C* i2c; //Declare i2c
-	Servo*servo; //not necessary unless you need servo. I used this for testing purpose
-	SmartDashboard * dash; // not necessary
-*/
 
 START_ROBOT_CLASS(Robot)

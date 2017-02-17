@@ -13,7 +13,7 @@ void ClimberSubsystem::RunClimbVictor(float speed) {
 	climbVictor->SetSpeed(speed);
 }
 
-void ClimberSubsystem::ReverseClimbVictor(float speed){
+/*void ClimberSubsystem::ReverseClimbVictor(float speed){
 	climbVictor->SetSpeed(speed);
 }
 
@@ -21,3 +21,4 @@ void ClimberSubsystem::StopClimbVictor(float speed){
 	climbVictor->SetSpeed(speed);
 
 }
+*/

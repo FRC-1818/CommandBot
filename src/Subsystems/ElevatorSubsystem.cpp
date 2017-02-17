@@ -13,6 +13,7 @@ void ElevatorSubsystem::RunElevatorVictor(float speed){
 	elevatorVictor->SetSpeed(speed);
 }
 
-void ElevatorSubsystem::StopElevatorVictor(float speed){
+/*void ElevatorSubsystem::StopElevatorVictor(float speed){
 	elevatorVictor->SetSpeed(speed);
 }
+*/

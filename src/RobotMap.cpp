@@ -23,7 +23,7 @@ std::shared_ptr<Victor> RobotMap::hopperSubsystemhopperVictor;
 std::shared_ptr<Victor> RobotMap::elevatorSubsystemelevatorVictor;
 std::shared_ptr<Servo> RobotMap::servo;
 void RobotMap::init() {
-	//i2c.reset(new frc::I2C*I2C);
+	//i2c.reset(new frc::I2C::Port::0,54);
 printf("started robotmap init");
 
     servo.reset(new frc::Servo(8));

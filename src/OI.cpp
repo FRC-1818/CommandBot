@@ -1,40 +1,39 @@
 #include "OI.h"
 #include <Joystick.h>
+#include <XboxController.h>
 #include <WPILib.h>
-#include "Commands/Climber/Climbup.h"
-#include "Commands/Climber/Climbdown.h"
-#include "Commands/Climber/Climbstop.h"
-#include "Commands/Hopper/Hopperup.h"
-#include "Commands/Hopper/Hopperdown.h"
-#include "Commands/Elevator/ElevatorOn.h"
-#include "Commands/Elevator/ElevatorOff.h"
-#include "Commands/Hopper/Hopperstop.h"
+#include <Commands/Climber/Climbon.h>
+#include <Commands/Climber/Climbdown.h>
+#include <Commands/Climber/Climbstop.h>
+#include <Commands/Elevator/Elevator.h>
+#include <Commands/Hopper/Hopperon.h>
+#include <Commands/Hopper/Hopperdown.h>
 
 OI::OI() {
 	joystick.reset(new XboxController(0));
 
 	climbupOperator.reset(new JoystickButton(joystick.get(), 5));
-	climbdownOperator.reset(new JoystickButton(joystick.get(), 4));
-	climbstopOperator.reset(new JoystickButton(joystick.get(), 2));
+	climbdownOperator.reset(new JoystickButton(joystick.get(), 6));
+	climbstopOperator.reset(new JoystickButton(joystick.get(), 1));
 
 	hopperupOperator.reset(new JoystickButton(joystick.get(),3));
 	hopperdownOperator.reset(new JoystickButton(joystick.get(),2));
-	hopperstopOperator.reset(new JoystickButton(joystick.get(),1));
+	hopperstopOperator.reset(new JoystickButton(joystick.get(),4));
 
 	elevatorOperator.reset(new JoystickButton(joystick.get(),8));
+	elevatorStop.reset(new JoystickButton(joystick.get(),7));
+
+	climbupOperator->WhenPressed(new Climbon(-1.0));   //climbup
+	climbdownOperator->WhenPressed(new Climbon(0.5));  //climbdown
+	climbstopOperator->WhenPressed(new Climbon(0));  //climbstop
+
+	hopperupOperator->WhenPressed(new Hopperon(0.5));    //hopperup
+	hopperdownOperator->WhenPressed(new Hopperdown(-0.5)); //hopperdown
+	hopperstopOperator->WhenPressed(new Hopperon(0));  //hopperstop
 
 
-	climbupOperator->WhenPressed(new Climbup);
-	climbdownOperator->WhenPressed(new Climbdown);
-	climbstopOperator->WhenPressed(new Climbstop);
-
-	hopperupOperator->WhenPressed(new Hopperup);
-	hopperdownOperator->WhenPressed(new Hopperdown);
-	hopperstopOperator->WhenPressed(new Hopperstop);
-
-
-	elevatorOperator->WhenPressed(new ElevatorOn);
-
+	elevatorOperator->WhenPressed(new Elevator(-1.0)); //elevatoron
+	elevatorStop->WhenPressed(new Elevator(0)); //elevatoroff
 
 
 }
@@ -64,5 +63,5 @@ float OI::DeadBandJoystick(float axis) {
 	 		axis = axis * fabs(axis);
 	 }
 	return axis;
-}
+}//DeadZone Adjust
 

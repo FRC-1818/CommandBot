@@ -1,12 +1,12 @@
-#ifndef DriveForward_H
-#define DriveForward_H
+#ifndef DriveStationtoPeg3_H
+#define DriveStationtoPeg3_H
 
 #include "CommandBase.h"
 #include <Robot.h>
 
-class AutonomousCenter : public CommandBase {
+class AutonomousRight : public CommandBase {
 public:
-	AutonomousCenter();
+	AutonomousRight();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -16,4 +16,4 @@ private:
 	std::shared_ptr<Timer> timer;
 };
 
-#endif  // DriveForward_H
+#endif  // DriveStationtoPeg3_H

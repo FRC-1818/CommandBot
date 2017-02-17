@@ -1,12 +1,11 @@
-#ifndef Hopperdown_H
-#define Hopperdown_H
+#ifndef Hopperon_H
+#define Hopperon_H
 
 #include "CommandBase.h"
 #include <Robot.h>
-
-class Hopperdown : public CommandBase {
+class Hopperon : public CommandBase {
 public:
-	Hopperdown(float speed);
+	Hopperon(float speed);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -16,4 +15,4 @@ private:
 	float inputSpeed;
 };
 
-#endif  // Hopperdown_H
+#endif

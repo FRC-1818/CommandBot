@@ -12,7 +12,7 @@ public:
 	ElevatorSubsystem();
 	void InitDefaultCommand();
 	void RunElevatorVictor(float speed);
-	void StopElevatorVictor(float speed);
+	//void StopElevatorVictor(float speed);
 };
 
 #endif  // ElevatorSubsystem_H

@@ -13,9 +13,7 @@ private:
 public:
 	HopperSubsystem();
 	void InitDefaultCommand();
-	void RunHopperVictor();
-	void ReverseHopperVictor();
-	void StopHopperVictor();
+	void RunHopperVictor(float speed);
 };
 
 #endif

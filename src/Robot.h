@@ -37,9 +37,9 @@ public:
 	//static std::shared_ptr<XboxController> joystick;
 	static std::shared_ptr<RobotDrive> myRobot;
 	static std::shared_ptr<I2C> i2c;
-	//static std::shared_ptr<CameraSubsystem> cameraSubsystem;
+	static std::shared_ptr<CameraSubsystem> cameraSubsystem;
 	static std::shared_ptr<DigitalInput> upLimit;
-	static bool doBoiler;
+	static std::shared_ptr<DigitalInput> downLimit;
 
 	virtual void RobotInit();
 	virtual void DisabledInit();
@@ -53,6 +53,6 @@ private:
 	frc::SendableChooser<frc::Command*> autoChooser;
 	std::unique_ptr<frc::Command> selectedMode;
 	std::unique_ptr<frc::Command> driveCommand;
-	std::unique_ptr<frc::Command> elevatorOn;
+	std::unique_ptr<frc::Command> cameraCommand;
 };
 #endif
