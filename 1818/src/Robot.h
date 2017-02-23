@@ -39,12 +39,11 @@ public:
 	static std::shared_ptr<RobotDrive> myRobot;
 	static std::shared_ptr<I2C> i2c;
 	static std::shared_ptr<CameraSubsystem> cameraSubsystem;
-	static std::shared_ptr<DigitalInput> upLimit;
-	static std::shared_ptr<DigitalInput> downLimit;
-	static std::shared_ptr<DigitalInput> switch1;
-	static std::shared_ptr<DigitalInput> switch2;
-	static std::shared_ptr<DigitalInput> switch3;
-	static std::shared_ptr<DigitalInput> switch4;
+	//static std::shared_ptr<DigitalInput> upLimit;
+	//static std::shared_ptr<DigitalInput> downLimit;
+	//static std::shared_ptr<DigitalInput> switch1;
+	//static std::shared_ptr<DigitalInput> switch2;
+	//static std::shared_ptr<DigitalInput> switch3;
 
 	virtual void RobotInit();
 	virtual void DisabledInit();
@@ -57,11 +56,10 @@ public:
 private:
 	frc::SendableChooser<frc::Command*> autoChooser;
 	std::unique_ptr<frc::Command> selectedMode;
-	std::unique_ptr<frc::Command> autonomousCenter;
-	std::unique_ptr<frc::Command> autonomousLeft;
-	std::unique_ptr<frc::Command> autonomousStright;
-	std::unique_ptr<frc::Command> autonomousRight;
 	std::unique_ptr<frc::Command> driveCommand;
 	std::unique_ptr<frc::Command> cameraCommand;
+	std::unique_ptr<frc::Command> autonomousCenter;
+	std::unique_ptr<frc::Command> autonomousLeft;
+	std::unique_ptr<frc::Command> autonomousRight;
 };
 #endif
