@@ -2,51 +2,53 @@
 
 Camera::Camera() {
 	Requires(Robot::cameraSubsystem.get());
-	timer.reset(new Timer());
-	//inputAngle = angle;
-	adjustedYaw = 0;
+	buttonAPressed = false;
+	buttonBPressed = false;
+	buttonXPressed = false;
+	buttonYPressed = false;
 }
 
 void Camera::Initialize() {
-	adjustedYaw = 0;
-	timer->Reset();
-	timer->Start();
+	buttonAPressed = Robot::oi->GetAButton();
+	buttonBPressed = Robot::oi->GetBButton();
+	buttonXPressed = Robot::oi->GetXButton();
+	buttonYPressed = Robot::oi->GetYButton();
 }
 
 void Camera::Execute() {
+ if (buttonYPressed){
 
-	/*for(inputAngle = Robot::cameraSubsystem->ServoMin();
-	 inputAngle < Robot::cameraSubsystem->ServoMax();
-	 inputAngle += Robot::cameraSubsystem->ServoRange / 10.0)
-	 {
-	 Robot::cameraSubsystem->RunServo(inputAngle);
-	 Wait(.1);
-	 }*/
-	adjustedYaw = Robot::cameraSubsystem->GetYawValue();
+	Robot::cameraSubsystem->RunServo(0.0714/2);
 
-	if (timer->Get() < 5.0) {
-		Robot::cameraSubsystem->RunServo(0.0);
-	} else if (timer->Get() < 10) {
-		Robot::cameraSubsystem->RunServo(0.5);
-	} else if (timer->Get() < 15.0) {
-		Robot::cameraSubsystem->RunServo(1.0);
-	}
+ } else {
+	if(buttonBPressed){
 
+	Robot::cameraSubsystem->RunServo(0.1429/2);
+
+	} else {
+		if(buttonAPressed){
+
+		Robot::cameraSubsystem->RunServo(0.2143/2);
+		}
+		else{
+		 if(buttonXPressed){
+
+		Robot::cameraSubsystem->RunServo(0.2857/2);
+
+			}
+		 }
+	  }
+   }
 }
 
 bool Camera::IsFinished() {
-	if (timer->Get() > 20) {
-		return true;
-	} else {
-		return false;
-	}
-
+	return false;
 }
 
 void Camera::End() {
-timer->Stop();
+
 }
 
 void Camera::Interrupted() {
-	timer->Stop();
+
 }

@@ -7,15 +7,16 @@
 class Camera : public CommandBase {
 public:
 	Camera();
-	//Camera(float angle);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
 private:
-	float adjustedYaw;
-	std::shared_ptr<Timer> timer;
+	bool buttonAPressed;
+	bool buttonBPressed;
+	bool buttonXPressed;
+	bool buttonYPressed;
 };
 
 #endif  // Camera_H
