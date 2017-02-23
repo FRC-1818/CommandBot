@@ -3,20 +3,14 @@
 
 CameraSubsystem::CameraSubsystem() : Subsystem("CameraSubsystem") {
 	servo = RobotMap::servo;
-	adjustedYaw = RobotMap::ahrs;
 }
 
 void CameraSubsystem::InitDefaultCommand() {
 
 }
 
-void CameraSubsystem::RunServo(float angle){
+void CameraSubsystem::RunServo(double angle){
 	servo->Set(angle);
-}
-
-float CameraSubsystem::GetYawValue(){
-	adjustedYaw->GetYaw();
-	return false;
 }
 
 void CameraSubsystem::ServoRange(float range){
