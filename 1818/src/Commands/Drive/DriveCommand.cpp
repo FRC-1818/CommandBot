@@ -1,5 +1,4 @@
 #include "DriveCommand.h"
-#include "..\..\robotmap.h"
 
 DriveCommand::DriveCommand() {
 	Requires(Robot::drivebaseSubsystem.get());
@@ -20,9 +19,9 @@ void DriveCommand::Execute() {
 	xAxis = Robot::oi->GetLeftXAxisDriver();
 	yAxis = Robot::oi->GetLeftYAxisDriver();
 	rotAxis = Robot::oi->GetRightXAxisDriver();
-	adjustedYaw = Robot::drivebaseSubsystem->GetAngle();
+	adjustedYaw = 0;
 
-   Robot::drivebaseSubsystem->MecanumDrive(-xAxis, -yAxis, -rotAxis, adjustedYaw );
+   Robot::drivebaseSubsystem->MecanumDrive(-xAxis, -yAxis, -rotAxis, adjustedYaw);
    //xAxis->Left&Right Slides; yAxis->Forward&Backward; rotAxis->Leftturn&RightTurn
 }
 

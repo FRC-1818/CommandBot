@@ -5,24 +5,15 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/Commands/Drive/Camera.cpp \
-../src/Commands/Drive/DriveCommand.cpp \
-../src/Commands/Drive/DriveForward.cpp \
-../src/Commands/Drive/DriveStationtoPeg2.cpp \
-../src/Commands/Drive/DriveStationtoPeg3.cpp 
+../src/Commands/Drive/DriveCommand.cpp 
 
 OBJS += \
 ./src/Commands/Drive/Camera.o \
-./src/Commands/Drive/DriveCommand.o \
-./src/Commands/Drive/DriveForward.o \
-./src/Commands/Drive/DriveStationtoPeg2.o \
-./src/Commands/Drive/DriveStationtoPeg3.o 
+./src/Commands/Drive/DriveCommand.o 
 
 CPP_DEPS += \
 ./src/Commands/Drive/Camera.d \
-./src/Commands/Drive/DriveCommand.d \
-./src/Commands/Drive/DriveForward.d \
-./src/Commands/Drive/DriveStationtoPeg2.d \
-./src/Commands/Drive/DriveStationtoPeg3.d 
+./src/Commands/Drive/DriveCommand.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

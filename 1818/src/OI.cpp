@@ -9,17 +9,27 @@
 OI::OI() {
 	joystick.reset(new XboxController(0));
 
-	hopperupOperator.reset(new JoystickButton(joystick.get(),5));   //LeftBumper
-	hopperstopOperator.reset(new JoystickButton(joystick.get(),6)); //RightBumper
+	YButton.reset(new JoystickButton(joystick.get(),4));
+	XButton.reset(new JoystickButton(joystick.get(),3));
+	BButton.reset(new JoystickButton(joystick.get(),2));
+	AButton.reset(new JoystickButton(joystick.get(),1));
 
-	elevatorOperator.reset(new JoystickButton(joystick.get(),8));   //StartButton
-	elevatorStop.reset(new JoystickButton(joystick.get(),7));       //BackButton
+	YButton->WhenPressed(new Camera(0.0714/2));
+	XButton->WhenPressed(new Camera(0.2857/2));
+	BButton->WhenPressed(new Camera(0.1429/2));
+	AButton->WhenPressed(new Camera(0.2143/2));
 
-	hopperupOperator->WhenPressed(new Hopperon);         //hopper up,down,stop
-	hopperstopOperator->CancelWhenPressed(new Hopperon); //cancle Hopper command
+	//hopperupOperator.reset(new JoystickButton(joystick.get(),5));   //LeftBumper
+	//hopperstopOperator.reset(new JoystickButton(joystick.get(),6)); //RightBumper
 
-	elevatorOperator->WhenPressed(new Elevator(-1.0)); //elevatoron
-	elevatorStop->WhenPressed(new Elevator(0.0));      //elevatoroff
+	//elevatorOperator.reset(new JoystickButton(joystick.get(),8));   //StartButton
+	//elevatorStop.reset(new JoystickButton(joystick.get(),7));       //BackButton
+
+	//hopperupOperator->WhenPressed(new Hopperon);                    //hopper up,down,stop
+	//hopperstopOperator->CancelWhenPressed(new Hopperon);            //cancle Hopper command
+
+	//elevatorOperator->WhenPressed(new Elevator(-1.0));              //elevatoron
+	//elevatorStop->WhenPressed(new Elevator(0.0));                   //elevatoroff
 
 }
 
@@ -34,7 +44,7 @@ double OI::GetLeftYAxisDriver(){
 	double joystickValue = OI::DeadBandJoystick(joystick->GetRawAxis(1));
 	return joystickValue;
 }
-//used in DriveCommand.cpp drive SlideLeft-SlideRight
+//used in DriveCommand.cpp drive Sli deLeft-SlideRight
 
 double OI::GetRightXAxisDriver(){
 	double joystickValue = OI::DeadBandJoystick(joystick->GetRawAxis(4));

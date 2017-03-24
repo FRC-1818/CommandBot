@@ -2,6 +2,7 @@
 #define VisionLineup_H
 
 #include "CommandBase.h"
+#include "Robot.h"
 
 class VisionLineup : public CommandBase {
 public:
@@ -11,6 +12,12 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
+private:
+	/*int leftX;
+	int rightX;
+	int leftWidth;
+	int rightWidth;
+	int time;*/
 };
 
 #endif  // VisionLineup_H

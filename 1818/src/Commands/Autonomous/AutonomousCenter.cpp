@@ -13,8 +13,12 @@ void AutonomousCenter::Initialize() {
 }
 
 void AutonomousCenter::Execute() {
-	if(timer->Get() < 3.0)
+	if(timer->Get() < 3.0){
 	Robot::drivebaseSubsystem->MecanumDrive(0.0, 0.5, 0.0, 0.0);
+	}
+	else{
+	Robot::drivebaseSubsystem->MecanumDrive(0.0, 0.0, 0.0, 0.0);
+	}
 }
 
 bool AutonomousCenter::IsFinished() {

@@ -16,6 +16,7 @@
 #include "Subsystems/HopperSubsystem.h"
 #include "Subsystems/ElevatorSubsystem.h"
 #include "Subsystems/CameraSubsystem.h"
+#include "Subsystems/VisionSubsystem.h"
 #include <Victor.h>
 #include <Jaguar.h>
 #include <XboxController.h>
@@ -23,7 +24,7 @@
 #include <I2C.h>
 #include <DigitalInput.h>
 #include <Servo.h>
-//#include "Commands/Drive/DriveCommand.h"
+
 
 class Robot: public IterativeRobot {
 
@@ -35,13 +36,13 @@ public:
 	static std::shared_ptr<ClimberSubsystem> climberSubsystem;
 	static std::shared_ptr<HopperSubsystem> hopperSubsystem;
 	static std::shared_ptr<ElevatorSubsystem> elevatorSubsystem;
-	//static std::shared_ptr<XboxController> joystick;
+	//static std::shared_ptr<VisionSubsystem> visionSubsystem;
 	static std::shared_ptr<RobotDrive> myRobot;
-	static std::shared_ptr<I2C> i2c;
+	//static std::shared_ptr<I2C> i2c;
 	static std::shared_ptr<CameraSubsystem> cameraSubsystem;
 	//static std::shared_ptr<DigitalInput> upLimit;
 	//static std::shared_ptr<DigitalInput> downLimit;
-	//static std::shared_ptr<DigitalInput> switch1;
+	static std::shared_ptr<DigitalInput> switch1;
 	//static std::shared_ptr<DigitalInput> switch2;
 	//static std::shared_ptr<DigitalInput> switch3;
 
@@ -58,7 +59,9 @@ private:
 	std::unique_ptr<frc::Command> selectedMode;
 	std::unique_ptr<frc::Command> driveCommand;
 	std::unique_ptr<frc::Command> cameraCommand;
-	std::unique_ptr<frc::Command> autonomousCenter;
+	std::unique_ptr<frc::Command> climberCommand;
+	std::unique_ptr<frc::CommandGroup> autoCenter;
+	std::unique_ptr<frc::Command> goForward;
 	std::unique_ptr<frc::Command> autonomousLeft;
 	std::unique_ptr<frc::Command> autonomousRight;
 };

@@ -13,13 +13,11 @@ public:
 	void End();
 	void Interrupted();
 private:
-	double xAxis;
-	double yAxis;
-	double rotAxis;
-	//double setSpeed;
-	double adjustedYaw;
-	//double finalAutoRot;
+	float xAxis;
+	float yAxis;
+	float rotAxis;
+	float adjustedYaw;
 
 };
 
-#endif  // DriveCommand_H
+#endif

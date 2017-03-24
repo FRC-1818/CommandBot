@@ -4,13 +4,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/Commands/Autonomous/AutonomousCenter.cpp 
+../src/Commands/Autonomous/AutonomousCenter.cpp \
+../src/Commands/Autonomous/AutonomousLeft.cpp \
+../src/Commands/Autonomous/AutonomousRight.cpp 
 
 OBJS += \
-./src/Commands/Autonomous/AutonomousCenter.o 
+./src/Commands/Autonomous/AutonomousCenter.o \
+./src/Commands/Autonomous/AutonomousLeft.o \
+./src/Commands/Autonomous/AutonomousRight.o 
 
 CPP_DEPS += \
-./src/Commands/Autonomous/AutonomousCenter.d 
+./src/Commands/Autonomous/AutonomousCenter.d \
+./src/Commands/Autonomous/AutonomousLeft.d \
+./src/Commands/Autonomous/AutonomousRight.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

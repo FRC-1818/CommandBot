@@ -4,19 +4,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/Commands/AutonomousCenter.cpp \
-../src/Commands/Climber.cpp \
-../src/Commands/ExampleCommand.cpp 
+../src/Commands/AutoCenter.cpp \
+../src/Commands/GoForward.cpp 
 
 OBJS += \
-./src/Commands/AutonomousCenter.o \
-./src/Commands/Climber.o \
-./src/Commands/ExampleCommand.o 
+./src/Commands/AutoCenter.o \
+./src/Commands/GoForward.o 
 
 CPP_DEPS += \
-./src/Commands/AutonomousCenter.d \
-./src/Commands/Climber.d \
-./src/Commands/ExampleCommand.d 
+./src/Commands/AutoCenter.d \
+./src/Commands/GoForward.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

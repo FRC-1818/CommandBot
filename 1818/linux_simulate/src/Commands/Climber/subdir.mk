@@ -4,19 +4,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/Commands/Climber/Climbdown.cpp \
-../src/Commands/Climber/Climbstop.cpp \
-../src/Commands/Climber/Climbup.cpp 
+../src/Commands/Climber/Climbon.cpp 
 
 OBJS += \
-./src/Commands/Climber/Climbdown.o \
-./src/Commands/Climber/Climbstop.o \
-./src/Commands/Climber/Climbup.o 
+./src/Commands/Climber/Climbon.o 
 
 CPP_DEPS += \
-./src/Commands/Climber/Climbdown.d \
-./src/Commands/Climber/Climbstop.d \
-./src/Commands/Climber/Climbup.d 
+./src/Commands/Climber/Climbon.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

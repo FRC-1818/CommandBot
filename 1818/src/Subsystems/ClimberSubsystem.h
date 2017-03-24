@@ -11,10 +11,9 @@ private:
 
 public:
 	ClimberSubsystem();
-	//void InitDefaultCommand();
+	void InitDefaultCommand();
 	void RunClimbVictor(float speed);
-	//void ReverseClimbVictor(float speed);
-	//void StopClimbVictor(float speed);
+
 };
 
-#endif  // ClimberSubsystem_H
+#endif

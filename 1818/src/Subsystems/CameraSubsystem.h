@@ -11,7 +11,7 @@ std::shared_ptr<Servo> servo;
 public:
 	CameraSubsystem();
 	void InitDefaultCommand();
-	void RunServo(double angle);
+	void RunServo(float angle);
 	void ServoRange(float range);
 	void ServoMax();
 	void ServoMin();

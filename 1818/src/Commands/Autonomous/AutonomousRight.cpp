@@ -27,9 +27,10 @@ bool AutonomousRight::IsFinished() {
 
 void AutonomousRight::End() {
 	timer->Stop();
-	Robot::drivebaseSubsystem->MecanumDrive(0.0, 0.0, 0.0, 0.0);
+	//Robot::drivebaseSubsystem->MecanumDrive(0.0, 0.0, 0.0, 0.0);
 }
 
 void AutonomousRight::Interrupted() {
-	Robot::drivebaseSubsystem->MecanumDrive(0.0, 0.0, 0.0, 0.0);
+	timer->Stop();
+	//Robot::drivebaseSubsystem->MecanumDrive(0.0, 0.0, 0.0, 0.0);
 }

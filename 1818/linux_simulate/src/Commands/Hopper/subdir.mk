@@ -4,19 +4,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/Commands/Hopper/Hopperdown.cpp \
-../src/Commands/Hopper/Hopperstop.cpp \
-../src/Commands/Hopper/Hopperup.cpp 
+../src/Commands/Hopper/Hopperon.cpp 
 
 OBJS += \
-./src/Commands/Hopper/Hopperdown.o \
-./src/Commands/Hopper/Hopperstop.o \
-./src/Commands/Hopper/Hopperup.o 
+./src/Commands/Hopper/Hopperon.o 
 
 CPP_DEPS += \
-./src/Commands/Hopper/Hopperdown.d \
-./src/Commands/Hopper/Hopperstop.d \
-./src/Commands/Hopper/Hopperup.d 
+./src/Commands/Hopper/Hopperon.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

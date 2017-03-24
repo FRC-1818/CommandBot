@@ -5,16 +5,18 @@
 #include <Robot.h>
 class Hopperon : public CommandBase {
 public:
-	Hopperon();
+	Hopperon(); //float speed
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
 private:
-	std::shared_ptr<Timer> timer;
 	//float inputSpeed;
-	//bool isDone;
+	std::shared_ptr<Timer> timer;
+	//bool limitSwitch1;
+	//bool limitSwitch2;
+
 };
 
 #endif

@@ -9,7 +9,7 @@ void CameraSubsystem::InitDefaultCommand() {
 
 }
 
-void CameraSubsystem::RunServo(double angle){
+void CameraSubsystem::RunServo(float angle){
 	servo->Set(angle);
 }
 

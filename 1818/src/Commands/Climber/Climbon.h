@@ -12,10 +12,8 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
-	void stop();
 private:
 	float inputSpeed;
-    //bool isDone;
 
 };
 

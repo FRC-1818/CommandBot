@@ -1,22 +1,26 @@
 #include "Camera.h"
 
-Camera::Camera() {
+Camera::Camera(float angle) {
 	Requires(Robot::cameraSubsystem.get());
-	buttonAPressed = false;
-	buttonBPressed = false;
-	buttonXPressed = false;
-	buttonYPressed = false;
+	//buttonAPressed = false;
+	//buttonBPressed = false;
+	//buttonXPressed = false;
+	//buttonYPressed = false;
+	inputAngle = angle;
 }
 
 void Camera::Initialize() {
-	buttonAPressed = Robot::oi->GetAButton();
-	buttonBPressed = Robot::oi->GetBButton();
-	buttonXPressed = Robot::oi->GetXButton();
-	buttonYPressed = Robot::oi->GetYButton();
+	//buttonAPressed = Robot::oi->GetAButton();
+	//buttonBPressed = Robot::oi->GetBButton();
+	//buttonXPressed = Robot::oi->GetXButton();
+	//buttonYPressed = Robot::oi->GetYButton();
 }
 
 void Camera::Execute() {
- if (buttonYPressed){
+
+	Robot::cameraSubsystem->RunServo(inputAngle);
+
+	/*if (buttonYPressed){
 
 	Robot::cameraSubsystem->RunServo(0.0714/2);
 
@@ -38,7 +42,7 @@ void Camera::Execute() {
 			}
 		 }
 	  }
-   }
+   }*/
 }
 
 bool Camera::IsFinished() {

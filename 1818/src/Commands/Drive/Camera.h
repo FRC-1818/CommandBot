@@ -6,17 +6,18 @@
 
 class Camera : public CommandBase {
 public:
-	Camera();
+	Camera(float angle);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
 private:
-	bool buttonAPressed;
-	bool buttonBPressed;
-	bool buttonXPressed;
-	bool buttonYPressed;
+	//bool buttonAPressed;
+	//bool buttonBPressed;
+	//bool buttonXPressed;
+	//bool buttonYPressed;
+	float inputAngle;
 };
 
 #endif  // Camera_H

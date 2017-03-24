@@ -3,6 +3,7 @@
 
 HopperSubsystem::HopperSubsystem() : Subsystem("HopperSubsystem") {
 	hopperVictor = RobotMap::hopperSubsystemhopperVictor;
+	//upLimit = RobotMap::upLimit;
 }
 
 void HopperSubsystem::InitDefaultCommand() {

@@ -15,6 +15,7 @@ RM := rm -rf
 -include src/Commands/Drive/subdir.mk
 -include src/Commands/Climber/subdir.mk
 -include src/Commands/Autonomous/subdir.mk
+-include src/Commands/subdir.mk
 -include src/subdir.mk
 -include subdir.mk
 -include objects.mk

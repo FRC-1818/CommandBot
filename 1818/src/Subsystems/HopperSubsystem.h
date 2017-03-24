@@ -8,6 +8,7 @@
 class HopperSubsystem : public Subsystem {
 private:
 	std::shared_ptr<Jaguar> hopperVictor;
+	//std::shared_ptr<DigitalInput> upLimit;
 	//std::shared_ptr<DigitalInput> limitSwitch;
 
 public:

@@ -24,6 +24,7 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 src \
+src/Commands \
 src/Commands/Autonomous \
 src/Commands/Climber \
 src/Commands/Drive \
